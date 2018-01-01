@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    
+    <!-- login -->
+    <string id="1000">Данни за вход</string>
+    <string id="101">Потребителско име</string>
+    <string id="102">Парола</string>
+	<string id="103">Торент плеиър</string>
+    <string id="104">18+</string>
+    
+</strings>
