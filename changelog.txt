@@ -1,0 +1,4 @@
+1.0.2
+added android support to play from Turkey Torrent Video Player
+1.0.1
+first public version
