@@ -113,13 +113,22 @@ def PLAY(name,url,iconimage):
        response = urllib2.urlopen(req)
        data=response.read()
        response.close()
-       match = re.compile('peerflix.*(magnet:.+?).,').findall(data)
+       match = re.compile('peerflix..(.+?).,').findall(data)
        for link in match:
         print link
+        link2 = urllib.quote_plus(link)
         if '0' in player:
          p = 'plugin://plugin.video.quasar/play?uri=%s' % (link)
         if '1' in player:
          p = 'plugin://plugin.video.yatp/?action=play&torrent=%s&file_index=dialog' % (link)
+        if '2' in player:
+         app      = 'rocks.turkeytorrent.player'
+         intent   = 'android.intent.action.VIEW'
+         dataType = ''
+         dataURI  = link
+         p = 'StartAndroidActivity("%s", "%s", "%s", "%s")' % (app, intent, dataType, dataURI)
+         xbmc.executebuiltin(p)         
+
         li = xbmcgui.ListItem(iconImage=iconimage, thumbnailImage=iconimage, path=p)
        try:
             xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, li)
