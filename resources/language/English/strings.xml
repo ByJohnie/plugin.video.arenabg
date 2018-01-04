@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    
+    <!-- login -->
+    <string id="1000">Login Details</string>
+    <string id="101">Username</string>
+    <string id="102">Password</string>
+	<string id="103">Torrent Player</string>
+    <string id="104">XXL 18+</string>
+    
+</strings>
