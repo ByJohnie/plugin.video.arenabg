@@ -128,7 +128,13 @@ def PLAY(name,url,iconimage):
          dataURI  = link
          p = 'StartAndroidActivity("%s", "%s", "%s", "%s")' % (app, intent, dataType, dataURI)
          xbmc.executebuiltin(p)         
-
+        if '3' in player:
+         app      = 'com.torrent_player'
+         intent   = 'android.intent.action.VIEW'
+         dataType = ''
+         dataURI  = link
+         p = 'StartAndroidActivity("%s", "%s", "%s", "%s")' % (app, intent, dataType, dataURI)
+         xbmc.executebuiltin(p) 
         li = xbmcgui.ListItem(iconImage=iconimage, thumbnailImage=iconimage, path=p)
        try:
             xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, li)
