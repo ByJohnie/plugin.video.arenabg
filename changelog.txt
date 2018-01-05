@@ -1,5 +1,5 @@
 1.0.3
-added android support to play from Torrent Player
+added android support to play external from Torrent Player
 1.0.2
 added android support to play from Turkey Torrent Video Player
 1.0.1
