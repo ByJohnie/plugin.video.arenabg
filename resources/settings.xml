@@ -5,7 +5,7 @@
         <setting id="sep1" label="1000" type="lsep"/>
         <setting label="101" type="text" id="settings_username" default=""/>
         <setting label="102" type="text" id="settings_password" default="" option="hidden" enable="!eq(-1,)"/>
-        <setting label="103" type="enum" id="player" values="Quasar|YAPT|Andoid-turkeytorrent|Android-TorrentPlayer" default="0"/>
+        <setting label="103" type="enum" id="player" values="Quasar|YAPT|Andoid-turkeytorrent|Android-TorrentPlayer|Elementum" default="0"/>
         <setting label="104" type="bool" id="xxx" default="false"/>
     </category>
 </settings>
