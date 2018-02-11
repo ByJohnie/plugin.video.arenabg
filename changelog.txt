@@ -1,3 +1,5 @@
+1.0.4
+added support for Elementum - Kodi video plugin
 1.0.3
 added android support to play external from Torrent Player
 1.0.2
