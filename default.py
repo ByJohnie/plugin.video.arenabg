@@ -31,7 +31,7 @@ arenabgtv = base64.b64decode('aHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vc3VidGl0bGVzOj
 xvid = base64.b64decode('aHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vc3VidGl0bGVzOjE3L2NhdGVnb3J5Ojgv')
 x264 = base64.b64decode('aHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vc3VidGl0bGVzOjE3L2NhdGVnb3J5OjExLw==')
 dokumentalni = base64.b64decode('aHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vc3VidGl0bGVzOjE3L2NhdGVnb3J5OjE1Lw==')
-hd = base64.b64decode('aaHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vc3VidGl0bGVzOjE3L2NhdGVnb3J5OjUzLw==')
+hd = base64.b64decode('aHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vc3VidGl0bGVzOjE3L2NhdGVnb3J5OjUzLw==')
 x265 = base64.b64decode('aHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vc3VidGl0bGVzOjE3L2NhdGVnb3J5OjU3Lw==')
 serieshd = base64.b64decode('aHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vc3VidGl0bGVzOjE3L2NhdGVnb3J5OjEwLw==')
 player = xbmcaddon.Addon().getSetting('player')
