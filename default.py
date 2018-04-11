@@ -55,7 +55,7 @@ def CATEGORIES():
         addDir('Филми ArenaBGTV',arenabgtv,1,movies)
         addDir('Филми Xvid',xvid,1,movies)
         addDir('Филми X264',x264,1,movies)
-        addDir('Филми X264',x265,1,movies)
+        addDir('Филми X265',x265,1,movies)
         addDir('Документални',dokumentalni,1,movies)
         addDir('Сериали',dirser,1,series)
         addDir('Сериали HD',serieshd,1,series)
