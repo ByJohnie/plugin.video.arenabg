@@ -26,6 +26,14 @@ dirx = base64.b64decode("aHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vdHlwZTo1Ni8=")
 MozilaFirefoxV51 = base64.b64decode("QXJlbmFQTEFZLTEuMC4w")
 basedir = base64.b64decode("aHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vcGxheWVyLw==")
 lenght = base64.b64decode("Lz90aW1lPTE1MTQ2Njc3NzU=")
+dirmovhd = base64.b64decode('aHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vc3VidGl0bGVzOjE3L2NhdGVnb3J5OjQ2Lw==')
+arenabgtv = base64.b64decode('aHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vc3VidGl0bGVzOjE3L2NhdGVnb3J5Ojcv')
+xvid = base64.b64decode('aHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vc3VidGl0bGVzOjE3L2NhdGVnb3J5Ojgv')
+x264 = base64.b64decode('aHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vc3VidGl0bGVzOjE3L2NhdGVnb3J5OjExLw==')
+dokumentalni = base64.b64decode('aHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vc3VidGl0bGVzOjE3L2NhdGVnb3J5OjE1Lw==')
+hd = base64.b64decode('aaHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vc3VidGl0bGVzOjE3L2NhdGVnb3J5OjUzLw==')
+x265 = base64.b64decode('aHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vc3VidGl0bGVzOjE3L2NhdGVnb3J5OjU3Lw==')
+serieshd = base64.b64decode('aHR0cHM6Ly9wbGF5ZXIuYXJlbmFiZy5jb20vc3VidGl0bGVzOjE3L2NhdGVnb3J5OjEwLw==')
 player = xbmcaddon.Addon().getSetting('player')
 xxx = xbmcaddon.Addon().getSetting('xxx')
 if not username or not password or not __settings__:
@@ -41,8 +49,16 @@ UA = MozilaFirefoxV51 #За симулиране на заявка от  ком�
 #Меню с директории в приставката
 def CATEGORIES():
         addDir('Търсене на видео',dirsea,2,searchicon)
-        addDir('Филми',dirmov,1,movies)
+        addDir('Последно добавени',dirmov,1,movies)
+        addDir('Филми HD',hd,1,movies)
+        addDir('Филми HDTV',dirmovhd,1,movies)
+        addDir('Филми ArenaBGTV',arenabgtv,1,movies)
+        addDir('Филми Xvid',xvid,1,movies)
+        addDir('Филми X264',x264,1,movies)
+        addDir('Филми X264',x265,1,movies)
+        addDir('Документални',dokumentalni,1,movies)
         addDir('Сериали',dirser,1,series)
+        addDir('Сериали HD',serieshd,1,series)
         if xxx == True:
          addDir('ХХХ',dirx,1,xxl)
         #addDir('','',1,'')
@@ -93,17 +109,22 @@ def SEARCH(url):
             #print 'request page url:' + url
             data=response.read()
             response.close()
+            br = 0
             match = re.compile('alt="(.+?)"></a>\s+.*\s+.*\s+.*(https.+?jpg).*player..(\d+).*false.*">\s+\W(\w+.+\S)').findall(data)
             for form,thumbnail,idmov,title in match:
              desc = 'ФОРМАТ:' + form
              addLink(title,idmov,3,desc,thumbnail)
+             br = br + 1
+        if br >= 22: #тогава имаме следваща страница и конструираме нейния адрес
+            getpage=re.compile('<li class="active"><a href="(.+?)/page:(.+?)">').findall(data)
+            for baseurl,page in getpage:
+                newpage = int(page)+1
+                url = baseurl + '/page:' + str(newpage)
+                print 'URL OF THE NEXT PAGE IS' + url
+                thumbnail = nextico
+                addDir('следваща страница>>'+str(newpage),url,4,thumbnail)     
         else:
             addDir('Върнете се назад в главното меню за да продължите','','',"DefaultFolderBack.png")
-
-
-
-
-
 
 #Зареждане на видео
 def PLAY(name,url,iconimage):
@@ -143,7 +164,27 @@ def PLAY(name,url,iconimage):
        except:
             xbmc.executebuiltin("Notification('Грешка','Видеото липсва на сървъра!')")
 
-
+def NEXTSEARCH(url):
+        req = urllib2.Request(url)
+        req.add_header('User-Agent', UA)
+        response = urllib2.urlopen(req)
+        #print 'request page url:' + url
+        data=response.read()
+        response.close()
+        br = 0
+        match = re.compile('alt="(.+?)"></a>\s+.*\s+.*\s+.*(https.+?jpg).*player..(\d+).*false.*">\s+\W(\w+.+\S)').findall(data)
+        for form,thumbnail,idmov,title in match:
+         desc = 'ФОРМАТ:' + form
+         addLink(title,idmov,3,desc,thumbnail)
+         br = br + 1
+        if br >= 18: #тогава имаме следваща страница и конструираме нейния адрес
+         getpage=re.compile('<li class="active"><a href="(.+?)/page:(.+?)">').findall(data)
+         for baseurl,page in getpage:
+                newpage = int(page)+1
+                url = baseurl + '/page:' + str(newpage)
+                print 'URL OF THE NEXT PAGE IS' + url
+                thumbnail = nextico
+                addDir('следваща страница>>'+str(newpage),url,4,thumbnail) 
 
 
 
@@ -246,4 +287,9 @@ elif mode==2:
 elif mode==3:
         print ""+url
         PLAY(name,url,iconimage)
+
+elif mode==4:
+        print ""+url
+        NEXTSEARCH(url)
+        
 xbmcplugin.endOfDirectory(int(sys.argv[1]))
