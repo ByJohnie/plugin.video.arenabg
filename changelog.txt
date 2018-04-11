@@ -1,3 +1,5 @@
+1.0.5
+new categories
 1.0.4
 added support for Elementum - Kodi video plugin
 1.0.3
